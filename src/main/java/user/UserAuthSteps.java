@@ -1,11 +1,9 @@
 package user;
-
 import io.qameta.allure.Step;
 import io.restassured.http.ContentType;
 import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import utilities.Endpoints;
-
 import static io.restassured.RestAssured.given;
 
 public class UserAuthSteps {
@@ -44,6 +42,13 @@ public class UserAuthSteps {
                 .header("Authorization", accessToken)
                 .body(user)
                 .patch(Endpoints.USER);
+    }
+
+    @Step("Создание пользователя и получение токена авторизации")
+    public String createUserReceiveToken() {
+        User user = GenerateRandomUser.createValidRandomUser();
+        Response response = createUser(user);
+        return response.then().extract().body().path("accessToken");
     }
 }
 

@@ -1,6 +1,5 @@
-package userTest;
+package usertest;
 
-import io.qameta.allure.Description;
 import io.qameta.allure.junit4.DisplayName;
 import io.restassured.response.Response;
 import org.junit.After;
@@ -31,7 +30,7 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Авторизация пользователя с валидными данными")
-    public void LoginUserSuccessful() {
+    public void loginUserSuccessful() {
         login = userSteps.userLoginWithToken(user, accessToken);
         login.then()
                 .body("accessToken", notNullValue())
@@ -43,7 +42,7 @@ public class LoginUserTest {
 
     @Test
     @DisplayName("Авторизация пользователя с невалидными данными")
-    public void LoginUserWithoutToken1() {
+    public void loginUserWithoutToken() {
         // Устанавливаем невалидные данные
         user.setEmail("fake@mail.com");
         user.setPassword("123abc");

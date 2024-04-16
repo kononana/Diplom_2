@@ -1,4 +1,4 @@
-package userTest;
+package usertest;
 
 import io.qameta.allure.Step;
 import io.qameta.allure.junit4.DisplayName;
@@ -11,9 +11,8 @@ import user.GenerateRandomUser;
 import user.User;
 import user.UserAuthSteps;
 import utilities.Endpoints;
-
 import static org.hamcrest.CoreMatchers.equalTo;
-import static org.hamcrest.CoreMatchers.notNullValue;
+
 
 public class ModifyUserTest {
     private UserAuthSteps userAuthSteps = new UserAuthSteps();
@@ -40,7 +39,7 @@ public class ModifyUserTest {
     }
     @Test
     @DisplayName("Изменение имени и почты пользователя с авторизацией")
-    public void ChangeUserNameAndEmail(){
+    public void changeUserNameAndEmail(){
         accessToken = createUserReceiveToken();
         user.setName("Pavel");
         user.setEmail("fixFake@mail.com");
@@ -52,7 +51,7 @@ public class ModifyUserTest {
     }
     @Test
     @DisplayName("Изменение пароля пользователя с авторизацией")
-    public void ChangeUserPassword(){
+    public void changeUserPassword(){
         accessToken = createUserReceiveToken();
         user.setPassword("fakePassword");
         response = userAuthSteps.modifyUser(user, accessToken);
@@ -64,7 +63,7 @@ public class ModifyUserTest {
 
     @Test
     @DisplayName("Изменение имени и почты пользователя без авторизации")
-    public void ChangeUserNameAndEmailWithoutAuth(){
+    public void changeUserNameAndEmailWithoutAuth(){
         accessToken = createUserReceiveToken();
         user.setName("Petr");
         user.setEmail("fixFake@mail.com");
@@ -76,7 +75,7 @@ public class ModifyUserTest {
     }
     @Test
     @DisplayName("Изменение пароля пользователя без авторизации")
-    public void ChangeUserPasswordWithoutAuth(){
+    public void changeUserPasswordWithoutAuth(){
         accessToken = createUserReceiveToken();
         user.setPassword("fakePassword123");
         response = userAuthSteps.modifyUser(user, "");

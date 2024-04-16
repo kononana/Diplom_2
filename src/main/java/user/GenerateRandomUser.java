@@ -1,7 +1,6 @@
 package user;
 import com.github.javafaker.Faker;
 import io.qameta.allure.Step;
-import user.User;
 
 public class GenerateRandomUser {
     public static Faker faker = new Faker();
@@ -46,5 +45,4 @@ public class GenerateRandomUser {
                 getRandomEmail(),
                 "");
     }
-
 }
